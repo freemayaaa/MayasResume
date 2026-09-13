@@ -21,20 +21,7 @@ export function Header() {
   };
 
   const downloadPDF = () => {
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-    script.onload = () => {
-      const element = document.documentElement;
-      const opt = {
-        margin: 10,
-        filename: 'Maya-Lucey-Portfolio.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
-      };
-      window.html2pdf().set(opt).save();
-    };
-    document.head.appendChild(script);
+    window.print();
   };
 
   return (
