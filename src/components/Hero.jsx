@@ -1,5 +1,4 @@
 import { Container } from './common/Container';
-import { Button } from './common/Button';
 import { resumeData } from '../data/resume';
 
 export function Hero() {
@@ -18,7 +17,7 @@ export function Hero() {
               Bringing creative vision to life through design, leadership, and production expertise.
             </p>
 
-            <div className="space-y-3 mb-10">
+            <div className="space-y-3">
               <a href={`mailto:${contact.email}`} className="flex items-center gap-3 text-gray-300 hover:text-primary transition-colors text-lg">
                 <span className="w-6">✉</span> {contact.email}
               </a>
@@ -28,15 +27,6 @@ export function Hero() {
               <div className="flex items-center gap-3 text-gray-300 text-lg">
                 <span className="w-6">📍</span> {contact.location}
               </div>
-            </div>
-
-            <div className="flex gap-4 flex-wrap">
-              <Button variant="primary" onClick={() => document.getElementById('resume').scrollIntoView({ behavior: 'smooth' })}>
-                View Resume
-              </Button>
-              <button className="px-6 py-3 border-2 border-primary text-primary rounded-lg hover:bg-blue-900 transition-all duration-300 font-medium">
-                Download CV
-              </button>
             </div>
           </div>
 

@@ -20,6 +20,23 @@ export function Header() {
     }
   };
 
+  const downloadPDF = () => {
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+    script.onload = () => {
+      const element = document.documentElement;
+      const opt = {
+        margin: 10,
+        filename: 'Maya-Lucey-Portfolio.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+      };
+      window.html2pdf().set(opt).save();
+    };
+    document.head.appendChild(script);
+  };
+
   return (
     <header className="sticky top-0 bg-gray-800 shadow-softer z-50 border-b border-gray-700">
       <Container>
@@ -29,7 +46,7 @@ export function Header() {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex gap-10">
+          <nav className="hidden md:flex gap-10 items-center">
             {navItems.map(item => (
               <button
                 key={item.id}
@@ -39,6 +56,12 @@ export function Header() {
                 {item.label}
               </button>
             ))}
+            <button
+              onClick={downloadPDF}
+              className="px-4 py-2 bg-primary text-white font-semibold rounded-lg hover:bg-blue-600 transition-all duration-300 text-sm"
+            >
+              Download PDF
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -64,6 +87,12 @@ export function Header() {
                 {item.label}
               </button>
             ))}
+            <button
+              onClick={downloadPDF}
+              className="block w-full text-left px-4 py-3 text-primary hover:bg-gray-700 transition-colors font-medium border-t border-gray-700"
+            >
+              📥 Download PDF
+            </button>
           </nav>
         )}
       </Container>
